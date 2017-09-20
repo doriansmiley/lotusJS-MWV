@@ -170,7 +170,7 @@ You can also nest web components within component skins. For example:
 ````
 In this example the `x-lotus-gallery-detail` component is passed as a skin part, and the `x-lotus-page-number` component is nested stand alone. Once these tags are added to the DOM they will be mapped to a component instance just like any other.
 
-For a complete example see our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS/tree/dev/example/sampleApp).
+For a complete example see our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS-MWV/tree/dev/example/sampleApp).
 
 # Dependency Injection
 
@@ -310,7 +310,7 @@ In this example the `myFunction` instance method will be called passing the even
 ````
 this.commandMap.addCommand( Lavender.RecordSetEvent.LOAD_PAGE_DATA, SampleApp.LoadImageAssetsCommand, 'myFunction', true );
 ````
-LotusMVW ships with `LotusMVW.AbstractCommand` which is a useful base class if you do not intend to create your own command implementation. Commands do not need to extend `LotusMVW.AbstractCommand`, but it is recommended you do so as it will reduce the amount of redundant code in your application, and allow commands to be easily reused in other applications. For a complete example of implementing a subclass of `LotusMVW.AbstractCommand` see the `SampleApp.LoadImageAssetsCommand` implementation that's part of our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS/tree/dev/example/sampleApp).
+LotusMVW ships with `LotusMVW.AbstractCommand` which is a useful base class if you do not intend to create your own command implementation. Commands do not need to extend `LotusMVW.AbstractCommand`, but it is recommended you do so as it will reduce the amount of redundant code in your application, and allow commands to be easily reused in other applications. For a complete example of implementing a subclass of `LotusMVW.AbstractCommand` see the `SampleApp.LoadImageAssetsCommand` implementation that's part of our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS-MWV/tree/dev/example/sampleApp).
 
 # View Mediators
 
@@ -357,7 +357,7 @@ Be sure you call `LotusMVW.AbstractMediator.prototype.init.call(this);` as the f
 
 Mediators are critical to ensuring your view components remain abstract and properly encapsulated so they can be reused across many applications. You are heavily encouraged to use them.
 
-For a complete example of how to implement view mediators soo our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS/tree/dev/example/sampleApp) and our [button example](https://github.com/doriansmiley/lotusJS/tree/dev/example/button).
+For a complete example of how to implement view mediators soo our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS-MWV/tree/dev/example/sampleApp) and our [button example](https://github.com/doriansmiley/lotusJS/tree/dev/example/button).
 
 # Data Binding
 
@@ -432,7 +432,7 @@ TODO: module example
 Both the Lotus (32kb) and Lavander (51kb) frameworks total only 83 kb combined. That's a lot of power in a small package.
 
 # Examples
-For a complete example of how to implement Lotus in an application using the IOC container see our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS/tree/dev/example/sampleApp). For an example of how to just use our web component frameowrk see our [button example](https://github.com/doriansmiley/lotusJS/tree/dev/example/button).
+For a complete example of how to implement Lotus in an application using the IOC container see our [sample application under the examples directory](https://github.com/doriansmiley/lotusJS-MWV/tree/dev/example/sampleApp). For an example of how to just use our web component frameowrk see our [button example](https://github.com/doriansmiley/lotusJS/tree/dev/example/button).
 
 # Create custom components built on Lotus and offer them through the component exchange
 
