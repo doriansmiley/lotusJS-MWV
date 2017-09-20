@@ -1,0 +1,17 @@
+#test on sauce labs
+export LOTUS_MVW_HOME=/Users/dsmiley/workspace/lotusJS-MWV
+
+cd $LOTUS_MVW_HOME
+sh ./scripts/testSauce.sh
+
+#test local
+export LOTUS_MVW_HOME=/Users/dsmiley/workspace/lotusJS-MWV
+
+cd $LOTUS_MVW_HOME
+npm test
+
+#compile typescript and webpack
+export LOTUS_MVW_HOME=~/workspace/lotusJS-MWV
+cd $LOTUS_MVW_HOME
+npm run build
+
