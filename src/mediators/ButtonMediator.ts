@@ -1,6 +1,5 @@
 import {AbstractMediator} from "./AbstractMediator";
 import * as Lotus from "lotusjs-components/lib";
-import {IComponent} from "../view/IComponent";
 import {inject} from "../reflection/InjectorDecorator";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 /**
@@ -9,7 +8,7 @@ import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 
 export class ButtonMediator extends AbstractMediator{
 
-    constructor(componentInstance:IComponent, context:Lotus.IContext){
+    constructor(componentInstance:Lotus.IComponent, context:Lotus.IContext){
         console.log('ButtonMediator constructor called')
         super(componentInstance,context);
     }

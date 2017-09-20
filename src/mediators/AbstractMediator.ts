@@ -1,7 +1,6 @@
 import {IMediator} from "./IMediator";
 import * as Lotus from "lotusjs-components/lib";
 import * as Lavender from 'lavenderjs/lib';
-import {IComponent} from "../view/IComponent";
 import {ComponentEvent} from "../control/events/ComponentEvent";
 import {injectable} from "../reflection/InjectorDecorator";
 /**
@@ -9,10 +8,10 @@ import {injectable} from "../reflection/InjectorDecorator";
  */
 export abstract class AbstractMediator extends Lavender.Subject implements IMediator{
     private _id:string;
-    private _componentInstance:IComponent;
+    private _componentInstance:Lotus.IComponent;
     private _context:Lotus.IContext;
 
-    constructor(componentInstance:IComponent, context:Lotus.IContext){
+    constructor(componentInstance:Lotus.IComponent, context:Lotus.IContext){
         super();
         this.id = Lavender.UuidUtils.generateUUID();
         this.componentInstance = componentInstance;
@@ -34,11 +33,11 @@ export abstract class AbstractMediator extends Lavender.Subject implements IMedi
         this.notify(value, 'id');
     }
 
-    get componentInstance():IComponent {
+    get componentInstance():Lotus.IComponent {
         return this._componentInstance;
     }
 
-    set componentInstance(value:IComponent) {
+    set componentInstance(value:Lotus.IComponent) {
         this._componentInstance = value;
         this.notify(value, 'componentInstance');
     }

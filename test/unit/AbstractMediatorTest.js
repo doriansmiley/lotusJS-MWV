@@ -7,7 +7,7 @@
 describe('AbstractMediatorTest', function () {
 
     it('check functions', function () {
-        var view = new LotusMVW.Button();
+        var view = new Lotus.Button();
         var context = new Lotus.Context(new Lavender.Config());
         var mediator = new LotusMVW.AbstractMediator(view, context);
         expect(mediator.componentInstance).toBe(view);
