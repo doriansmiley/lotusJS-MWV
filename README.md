@@ -1,5 +1,5 @@
 # lotusJS-MWV
-MVW framework for applications based on lotusJS web components
+An MVW framework for building HTML5 applications based on lotusJS web components
 
 - [npm Package Manager](#npm-package-manager)
 - [Typescript Source](#typescript-source)
@@ -22,7 +22,7 @@ The lotus core is built using Typescript which enables us to fully implement com
 
 # Web Component View
 
-lotusJS-MWV uses the Lotus web component framework (separate npm module) to allow you to create custom tags that encapsulate abstract functionality such as data grids, lists, buttons, image galleries, and more. Further, views can be mediated to provide application level event mediation, data binding, and virtually any other behavior that is specific to the surrounding application.
+lotusJS-MWV uses the LotusJS web component framework (separate npm module: lotusjs-components) to allow you to create custom tags that encapsulate abstract functionality such as data grids, lists, buttons, image galleries, and more. Further, views can be mediated to provide application level event mediation, data binding, and virtually any other behavior that is specific to the surrounding application.
 
 You can use the built in Lotus components or create your own custom components. To create a custom component you extend `Lotus.AbstractComponent` or an existing subclass. Then override at a minimum the following methods: `defineSkinParts`, `onSkinPartAdded` and `destroy`.
 
