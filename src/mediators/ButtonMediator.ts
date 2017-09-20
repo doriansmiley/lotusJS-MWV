@@ -1,7 +1,5 @@
 import {AbstractMediator} from "./AbstractMediator";
 import * as Lotus from "lotusjs-components/lib";
-import {inject} from "../reflection/InjectorDecorator";
-import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 /**
  * Created by dsmiley on 7/26/17.
  */

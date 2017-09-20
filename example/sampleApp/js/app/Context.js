@@ -3,10 +3,10 @@
  */
 SampleApp.Context = function (model, params) {
     this.model = model;
-    Lotus.Context.prototype.constructor.call(this, model.config, params);
+    LotusMVW.Context.prototype.constructor.call(this, model.config, params);
 }
 /************* Inherit from Subject for data binding *************/
-Lavender.ObjectUtils.extend(Lotus.Context, SampleApp.Context);
+Lavender.ObjectUtils.extend(LotusMVW.Context, SampleApp.Context);
 
 SampleApp.Context.prototype.mapComponents = function(){
     this.componentMap.mapComponent('x-lotus-image-gallery', HTMLDivElement.prototype, Lotus.ImageGalleryCollectionView, xtag);
@@ -21,7 +21,7 @@ SampleApp.Context.prototype.mapCommands = function(){
     // you can optionally pass functionName and useSingleton
     //functionName defaults to 'execute'
     //if useSingleton is true only a single instance of the command will be executed when the events is dispatched, use this options with extreme caution
-    //this.commandMap.addCommand( 'testEvent1', Lotus.SampleCommand, 'myFunction', true )
+    //this.commandMap.addCommand( 'testEvent1', LotusMVW.SampleCommand, 'myFunction', true )
 }
 
 SampleApp.Context.prototype.mapObjects = function(){
@@ -31,7 +31,7 @@ SampleApp.Context.prototype.mapObjects = function(){
     this.injector.mapSingletonInstance(SampleApp.SERVICE_RESULT_PARSER_KEY, SampleApp.SerializeFactory.getInstance().getServiceResultParser(this));
     this.injector.mapSingletonInstance(SampleApp.SERIALIZE_FACTORY_KEY, SampleApp.SerializeFactory.getInstance());
     this.injector.mapSingletonInstance(SampleApp.APP_SERVICES, new SampleApp.SampleService(this));
-    this.injector.mapSingletonInstance(SampleApp.EVENT_DISPATCHER_KEY, Lotus.EventDispatcherFactory.getInstance().getEventDispatcher( this.config ));
+    this.injector.mapSingletonInstance(SampleApp.EVENT_DISPATCHER_KEY, LotusMVW.EventDispatcherFactory.getInstance().getEventDispatcher( this.config ));
     this.injector.mapSingletonInstance(SampleApp.MODEL_KEY, this.model);
     this.injector.mapSingletonInstance(SampleApp.OP_MODEL_KEY, this.model.opMpdel);
     this.injector.mapSingletonInstance(SampleApp.ERROR_MODEL_KEY, this.model.errorModel);

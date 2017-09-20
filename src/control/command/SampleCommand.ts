@@ -2,6 +2,7 @@ import {AbstractCommand} from "./AbstractCommand";
 import * as Lotus from "lotusjs-components/lib";
 import * as Lavender from 'lavenderjs/lib';
 import {ISampleService} from "../service/ISampleService";
+import {IContext} from "../../context/IContext";
 
 /**
  * Created by dsmiley on 7/28/17.
@@ -10,7 +11,7 @@ export class SampleCommand extends AbstractCommand{
 
     protected model:Object;//you should implement a concrete model implementation in your projects
 
-    constructor(context:Lotus.IContext){
+    constructor(context:IContext){
         super(context);
     }
 

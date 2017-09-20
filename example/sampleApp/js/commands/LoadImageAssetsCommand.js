@@ -2,7 +2,7 @@
  * Created by dsmiley on 3/4/14.
  */
 SampleApp.LoadImageAssetsCommand = function(context){
-    Lotus.AbstractCommand.prototype.constructor.call(this, context);
+    LotusMVW.AbstractCommand.prototype.constructor.call(this, context);
     //get injected params.
     //IMPORTANT: this is just an example of how to obtain object instances, in a production application you could use global variables, instance attributes, or static attributes
     //Anything but a hard coded string
@@ -11,11 +11,11 @@ SampleApp.LoadImageAssetsCommand = function(context){
     this.parser = context.injector.inject(SampleApp.SERVICE_RESULT_PARSER_KEY);
 }
 /************* Inherit from Subject for data binding *************/
-Lavender.ObjectUtils.extend(Lotus.AbstractCommand, SampleApp.LoadImageAssetsCommand);
+Lavender.ObjectUtils.extend(LotusMVW.AbstractCommand, SampleApp.LoadImageAssetsCommand);
 
 //execute the service call
 SampleApp.LoadImageAssetsCommand.prototype.execute = function (event) {
-    Lotus.AbstractCommand.prototype.execute.call(this, event);
+    LotusMVW.AbstractCommand.prototype.execute.call(this, event);
     this.recordSet = event.payload.recordSet;
 }
 
@@ -66,7 +66,7 @@ SampleApp.LoadImageAssetsCommand.prototype.updateResults = function (items) {
 }
 
 SampleApp.LoadImageAssetsCommand.prototype.destroy = function () {
-    Lotus.AbstractCommand.prototype.destroy.call(this);
+    LotusMVW.AbstractCommand.prototype.destroy.call(this);
     this.service = null;
     this.model = null;
     this.parser = null;

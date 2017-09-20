@@ -2,9 +2,10 @@
  * Created by dsmiley on 7/24/17.
  */
 import * as Lotus from "lotusjs-components/lib";
+import {ICommandMap} from "./ICommandMap";
 import * as Lavender from 'lavenderjs/lib';
 
-export class CommandMap implements Lotus.ICommandMap{
+export class CommandMap implements ICommandMap{
     public eventFunctionMap:Object;
     public instanceMap:Object;
     public context:Lotus.IContext;

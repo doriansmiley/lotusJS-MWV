@@ -2,11 +2,11 @@
  * Created by dsmiley on 9/15/16.
  */
 SampleApp.ImageGalleryMediator = function (componentInstance, context) {
-    Lotus.AbstractMediator.prototype.constructor.call(this, componentInstance, context);
+    LotusMVW.AbstractMediator.prototype.constructor.call(this, componentInstance, context);
     
 }
 /************* Inherit from AbstractEventDispatcher for event dispatching *************/
-Lavender.ObjectUtils.extend(Lotus.AbstractMediator, SampleApp.ImageGalleryMediator);
+Lavender.ObjectUtils.extend(LotusMVW.AbstractMediator, SampleApp.ImageGalleryMediator);
 
 SampleApp.ImageGalleryMediator.toString = function(){
     return 'SampleApp.ImageGalleryMediator';
@@ -19,7 +19,7 @@ SampleApp.ImageGalleryMediator.prototype.onLoadPageData = function (event) {
 }
 
 SampleApp.ImageGalleryMediator.prototype.init = function () {
-    Lotus.AbstractMediator.prototype.init.call(this);
+    LotusMVW.AbstractMediator.prototype.init.call(this);
     var recordSetLabel = this.componentInstance.element.getAttribute('data-source');//note the attribute recordset should be set on the element identitifed as your component root in your template file (templates/imageGallery.html)
     var model = this.context.injector.inject(SampleApp.MODEL_KEY);
     if( model.recordsetModel.recordSets.recordSetsBySource[recordSetLabel] === null || model.recordsetModel.recordSets.recordSetsBySource[recordSetLabel] === undefined ){
