@@ -1,7 +1,6 @@
 import {IMediator} from "./IMediator";
 import * as Lotus from "lotusjs-components/lib";
 import * as Lavender from 'lavenderjs/lib';
-import {ComponentEvent} from "../control/events/ComponentEvent";
 import {injectable} from "../reflection/InjectorDecorator";
 /**
  * Created by dsmiley on 7/26/17.
@@ -17,7 +16,7 @@ export abstract class AbstractMediator extends Lavender.Subject implements IMedi
         this.componentInstance = componentInstance;
         this.context = context;
         if(!this.componentInstance.ready){
-            this.componentInstance.addEventListener(ComponentEvent.READY, this, 'init');
+            this.componentInstance.addEventListener(Lotus.ComponentEvent.READY, this, 'init');
         }else{
             this.init();
         }
@@ -56,8 +55,8 @@ export abstract class AbstractMediator extends Lavender.Subject implements IMedi
     }
 
     protected removeEventListeners():void{
-        if(this.componentInstance.canListen(ComponentEvent.READY, this, 'init')){
-            this.componentInstance.removeEventListener(ComponentEvent.READY, this, 'init');
+        if(this.componentInstance.canListen(Lotus.ComponentEvent.READY, this, 'init')){
+            this.componentInstance.removeEventListener(Lotus.ComponentEvent.READY, this, 'init');
         }
     }
 
