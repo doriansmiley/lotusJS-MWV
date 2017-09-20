@@ -17,7 +17,7 @@ describe('AbstractCommandTest ', function () {
         * */
         var config = new Lavender.Config();
         config.baseUrl = 'http://localhost';
-        var context = new Lotus.Context(config);
+        var context = new LotusMVW.Context(config);
         var service = new LotusMVW.SampleService(config);
         var parser = {parse:function(result){return result}};
         var opModel = new Lavender.AsyncOperationModel();

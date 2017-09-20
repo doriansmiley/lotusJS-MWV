@@ -6,6 +6,8 @@ export * from './context/Injector';
 export * from './context/CommandMap';
 export * from './context/IMediatorMap';
 export * from './context/MediatorMap';
+export * from './context/ComponentMap';
+export * from './context/Context';
 export * from './reflection/InjectorDecorator';
 export * from './factory/IEventDispatcherFactory';
 export * from './factory/EventDispatcherFactory';

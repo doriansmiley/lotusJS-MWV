@@ -1,7 +1,7 @@
 import { ICommand } from "./ICommand";
-import * as Lotus from "lotusjs-components/lib";
 import * as Lavender from 'lavenderjs/lib';
 import { IService } from "../service/IService";
+import { IContext } from "../../context/IContext";
 /**
  * Created by dsmiley on 7/28/17.
  */
@@ -10,8 +10,8 @@ export declare abstract class AbstractCommand extends Lavender.EventDispatcher i
     protected opModel: Lavender.AsyncOperationModel;
     protected parser: Lavender.IParser;
     protected errorModel: Lavender.ErrorModel;
-    context: Lotus.IContext;
-    constructor(context: Lotus.IContext);
+    context: IContext;
+    constructor(context: IContext);
     execute(event: Lavender.IEvent): string;
     protected executeServiceMethod(): string;
     protected parseResponse(result: Lavender.IResult): Object;

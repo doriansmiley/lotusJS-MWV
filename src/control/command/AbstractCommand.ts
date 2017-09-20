@@ -4,7 +4,7 @@ import * as Lavender from 'lavenderjs/lib';
 import {ActionSuccessEvent} from '../events/ActionSuccessEvent';
 import {ActionErrorEvent} from '../events/ActionErrorEvent';
 import {IService} from "../service/IService";
-import {injectable} from "../../reflection/InjectorDecorator";
+import {IContext} from "../../context/IContext";
 /**
  * Created by dsmiley on 7/28/17.
  */
@@ -13,10 +13,10 @@ export abstract class AbstractCommand extends Lavender.EventDispatcher implement
     protected opModel:Lavender.AsyncOperationModel;
     protected parser:Lavender.IParser;
     protected errorModel:Lavender.ErrorModel;
-    public context:Lotus.IContext;
+    public context:IContext;
 
 
-    constructor(context:Lotus.IContext){
+    constructor(context:IContext){
         super();
         this.context = context;
         this.service = context.injector.inject('service') as IService;
