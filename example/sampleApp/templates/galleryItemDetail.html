@@ -1,16 +1,15 @@
 <template>
     <style>
-        label{
-            width:150px;
-            height:50px;
-            color: #ff1713;
-            border: solid 1px #000000;
+        span{
+            color: #1e5799;
         }
     </style>
     <div data-source="sampleAPI">
-        <label data-skin-part="nameLabel"></label>
-        <label data-skin-part="dateCreatedLabel"></label>
-        <label data-skin-part="urlLabel"></label>
+        <p>
+            Image Name: <span data-skin-part="nameLabel"></span>
+            Created On: <span data-skin-part="dateCreatedLabel"></span>
+            URL: <span data-skin-part="urlLabel"></span>
+        </p>
     </div>
 
 </template>
