@@ -32,6 +32,11 @@ export class Context extends Lotus.Context{
         this.mapCommands();
         this.mapObjects();
         this.mapMediators();
+        this.mapTags();
+    }
+
+    public mapTags(){
+
     }
 
     public mapCommands(){

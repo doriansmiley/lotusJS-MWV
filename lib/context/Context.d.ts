@@ -11,6 +11,7 @@ export declare class Context extends Lotus.Context {
     mediatorMap: IMediatorMap;
     constructor(config: Object, params: Object);
     startUp(): void;
+    mapTags(): void;
     mapCommands(): void;
     mapObjects(): void;
     mapMediators(): void;
