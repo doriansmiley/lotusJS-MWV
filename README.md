@@ -1,5 +1,7 @@
 # lotusJS-MWV
 An MVW framework for building HTML5 applications based on lotusJS web components
+[![Join the chat at https://gitter.im/lotusJS/Lobby](https://badges.gitter.im/lotusJS/Lobby.svg)](https://gitter.im/lotusJS/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![](https://data.jsdelivr.com/v1/package/npm/lotusjs-mvw/badge)](https://www.jsdelivr.com/package/npm/lotusjs-mvw)
 
 - [npm Package Manager](#npm-package-manager)
 - [Typescript Source](#typescript-source)
