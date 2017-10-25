@@ -77,26 +77,26 @@ SampleApp.init = function(){
 }
 ````
 
-If you are working in typescript you can take advantage of class decorators and use the declarative syntax. Lotus-MVW exposes two decorators `@inject` and @`bindable`.
+If you are working in typescript you can take advantage of class decorators and use the declarative syntax.
+Lotus-MVW exposes two decorators `@inject` and @`bindable`.
 
-The `@injectable` decorator will use the reflection API to inject objects mapped on your application's context to properties and accessors. When using `@inject` you have to pass a reference to your application's injector as follows:
+The `@injectable` decorator will use the reflection API to inject objects mapped on your application's context to properties and accessors.
+When using `@inject` you have to pass the id value of your context, for example:
 
 ````
-@inject(myContext.injector)
+@inject('MyContext')
 public serviceFactory:HttpServiceFactory;
 ````
-Most applications will make their context a singleton, or supply some other global reference so the context can be located upon evaluation of decorator functions. For example:
+The value of the context id is defined by its override of the `toString` function. In this case:
 ````
 export class TestContext extends Context{
 
-    private static INSTANCE:IContext = null;
-
     constructor(model:Object, params:Object){
         super(model,params);
-        if (TestContext.INSTANCE != null ) {
-            throw( 'TestContext.INSTANCE: Singleton class has already been instantiated' );
-        }
-        TestContext.INSTANCE = this;
+    }
+
+    public toString():string{
+        return 'TestContext';
     }
 
     public mapObjects(){
@@ -104,22 +104,25 @@ export class TestContext extends Context{
         this.injector.mapSingletonInstance(HttpServiceFactory, HttpServiceFactory.getInstance());
         this.injector.mapSingletonInstance(Context, this);
     }
-
-    public static getInstance(model?:Object, params?:Object):IContext{
-        if (TestContext.INSTANCE == null) {
-            TestContext.INSTANCE = new TestContext(model, params);
-        }
-        return TestContext.INSTANCE;
-    }
 }
 ````
-You can then gain access to the injector as follows:
+In this example the `Context` subclass `TestContext` defines overrides the `toString` function returning `TestContext`.
+
+To resolve injections the the LotusMWV base Context class which all context subclasses extend defined the following function
 ````
-@inject(TestContext.getInstance().injector)
-public httpFactory:HttpServiceFactory;
+public resolveInjections():void{
+        for(var i=0; i<injections.length; i++){
+            if(injections[i].context == this.toString()){
+                injections[i].instance[injections[i].property] = this.injector.inject(injections[i].type);
+            }
+        }
+    }
 ````
-Passing the context in the call to inject is an important feature of Lotus-MVW, not a bug. This allows proper sandboxing of applications.
-We envision a point where custom elements may become small application modules which may define their own context. Passing in a reference to the injector ensures there are no collisions between application instances.
+Note that `injections` in a global static variable that will be the same for all context instances. Hence the check against `injections[i].context == this.toString()`.
+
+Passing the context id in the call to `@inject` is an important feature of Lotus-MVW, not a bug. This allows proper sandboxing of applications.
+We envision a point when entire applications can be loaded as modules and run side by side.
+Passing in a reference to the context ensures there are no collisions between application instances.
 
 If you want a property to be bindable and don't want to define accessors that manually call `this.notify` then you can us `@bindable`. For example:
 ````
