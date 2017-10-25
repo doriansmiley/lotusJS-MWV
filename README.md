@@ -1,6 +1,9 @@
 # lotusJS-MWV
 An MVW framework for building HTML5 applications based on lotusJS web components
 
+[![Join the chat at https://gitter.im/lotusJS/Lobby](https://badges.gitter.im/lotusJS/Lobby.svg)](https://gitter.im/lotusJS/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![](https://data.jsdelivr.com/v1/package/npm/lotusjs-mvw/badge)](https://www.jsdelivr.com/package/npm/lotusjs-mvw)
+
 - [npm Package Manager](#npm-package-manager)
 - [Typescript Source](#typescript-source)
 - [Web Component View](#web-component-view)
@@ -74,19 +77,57 @@ SampleApp.init = function(){
 }
 ````
 
-If you are working in typescript you can take advantage of class decorators and use the declarative syntax. In order to inject into a class you must first mark it as injectable. For example:
+If you are working in typescript you can take advantage of class decorators and use the declarative syntax. Lotus-MVW exposes two decorators `@inject` and @`bindable`.
+
+The `@injectable` decorator will use the reflection API to inject objects mapped on your application's context to properties and accessors. When using `@inject` you have to pass a reference to your application's injector as follows:
 
 ````
-@injectable
-export class ButtonMediator extends AbstractMediator
-````
-
-The `@injectable` decorator will use the reflection API to include the required code to support injections. You can then inject instances into properties as follows:
-
-````
-@inject
+@inject(myContext.injector)
 public serviceFactory:HttpServiceFactory;
 ````
+Most applications will make their context a singleton, or supply some other global reference so the context can be located upon evaluation of decorator functions. For example:
+````
+export class TestContext extends Context{
+
+    private static INSTANCE:IContext = null;
+
+    constructor(model:Object, params:Object){
+        super(model,params);
+        if (TestContext.INSTANCE != null ) {
+            throw( 'TestContext.INSTANCE: Singleton class has already been instantiated' );
+        }
+        TestContext.INSTANCE = this;
+    }
+
+    public mapObjects(){
+        this.injector.mapSingletonInstance(EventDispatcherFactory, EventDispatcherFactory.getInstance());
+        this.injector.mapSingletonInstance(HttpServiceFactory, HttpServiceFactory.getInstance());
+        this.injector.mapSingletonInstance(Context, this);
+    }
+
+    public static getInstance(model?:Object, params?:Object):IContext{
+        if (TestContext.INSTANCE == null) {
+            TestContext.INSTANCE = new TestContext(model, params);
+        }
+        return TestContext.INSTANCE;
+    }
+}
+````
+You can then gain access to the injector as follows:
+````
+@inject(TestContext.getInstance().injector)
+public httpFactory:HttpServiceFactory;
+````
+Passing the context in the call to inject is an important feature of Lotus-MVW, not a bug. This allows proper sandboxing of applications.
+We envision a point where custom elements may become small application modules which may define their own context. Passing in a reference to the injector ensures there are no collisions between application instances.
+
+If you want a property to be bindable and don't want to define accessors that manually call `this.notify` then you can us `@bindable`. For example:
+````
+@bindable()
+public bindingTest:Object;
+````
+In this example the public property `bindingTest` is replaced with property definitions that include a call to `this.notify`.
+IMPORTANT: At this time any object using `@binable` must extend Lavender.Subject. Future releases will remove this requirement.
 
 Please note that using decorators will increase the size of your application. For this reason we encourage people to use the imperative syntax instead of the declarative syntax.
 
