@@ -7,6 +7,8 @@
 describe('Decorator Tests ', function () {
 
     it('check Decorator functions', function (done) {
+        //setup the context
+        var contenxt = new LotusMVW.TestContext({})
         var testUtils = new LotusMVW.TestUtils();
         //test injections
         expect( testUtils.eventDispatcherFactory instanceof  LotusMVW.EventDispatcherFactory).toBe(true);

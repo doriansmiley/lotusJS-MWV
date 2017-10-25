@@ -28,3 +28,5 @@ export * from './mediators/IMediator';
 export * from './mediators/AbstractMediator';
 export * from './mediators/ButtonMediator';
 export * from './mediators/ListMediator';
+export * from './utils/TestUtils';
+export * from './utils/TestContext';

@@ -4,9 +4,11 @@
 import 'reflect-metadata';
 import {IInjector} from "../context/IInjector";
 
-export type injectionResolver = {property:string, type:Function};
+export type injectionResolver = {property:string, type:Function, context:string, instance:any};
 
-export function inject(injector:IInjector):any{
+export const injections:Array<injectionResolver> = [];
+
+export function inject(context:string):any{
     return function (target: any, key: string, descriptor: PropertyDescriptor){
         let t = Reflect.getMetadata('design:type', target, key);
         if (!t) {
@@ -14,11 +16,7 @@ export function inject(injector:IInjector):any{
             t = Reflect.getMetadata('design:type', target.constructor, key);
         }
         console.log('attempting to inject type: ' + t.name + 'into property: ' + key);
-        var instance:any = injector.inject(t);
-        if(instance){
-            console.log('injection found for type, value injected')
-            target[key] = instance;
-        }
+        injections.push({property:key, type:t, context:context, instance:target});
     }
 }
 
