@@ -6,6 +6,7 @@ import { IContext } from "../context/IContext";
 export declare class TestContext extends Context {
     private static INSTANCE;
     constructor(model: Object, params: Object);
+    toString(): string;
     mapObjects(): void;
     static getInstance(model?: Object, params?: Object): IContext;
 }

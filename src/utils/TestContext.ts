@@ -2,7 +2,6 @@ import {Context} from "../context/Context";
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 import {IContext} from "../context/IContext";
-
 /**
  * This class is used for testing purposes only. It is not included in distributions
  */
@@ -16,6 +15,10 @@ export class TestContext extends Context{
             throw( 'TestContext.INSTANCE: Singleton class has already been instantiated' );
         }
         TestContext.INSTANCE = this;
+    }
+
+    public toString():string{
+        return 'TestContext';
     }
 
     public mapObjects(){

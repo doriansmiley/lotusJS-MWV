@@ -13,11 +13,11 @@ import {Context} from "../context/Context";
 * */
 export class TestUtils extends Lavender.Subject{
 
-    @inject(TestContext.getInstance().injector)
+    @inject('TestContext')
     public eventDispatcherFactory:EventDispatcherFactory;
-    @inject(TestContext.getInstance().injector)
+    @inject('TestContext')
     public httpFactory:HttpServiceFactory;
-    @inject(TestContext.getInstance().injector)
+    @inject('TestContext')
     public context:Context;
     @bindable()
     public bindingTest:Object;

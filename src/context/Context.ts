@@ -10,6 +10,7 @@ import {Injector} from "./Injector";
 import {MediatorMap} from "./MediatorMap";
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {ComponentMap} from "./ComponentMap";
+import {injections} from '../reflection/InjectorDecorator';
 
 export class Context extends Lotus.Context{
     public commandMap:ICommandMap;
@@ -31,8 +32,21 @@ export class Context extends Lotus.Context{
         this.mediatorMap = new MediatorMap(this);
         this.mapCommands();
         this.mapObjects();
+        this.resolveInjections();
         this.mapMediators();
         this.mapTags();
+    }
+
+    public toString():string{
+        return 'LotusMVW.Context';
+    }
+
+    public resolveInjections():void{
+        for(var i=0; i<injections.length; i++){
+            if(injections[i].context == this.toString()){
+                injections[i].instance[injections[i].property] = this.injector.inject(injections[i].type);
+            }
+        }
     }
 
     public mapTags(){
