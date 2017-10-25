@@ -1,6 +1,6 @@
 {
   "name": "lotusjs-mvw",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "MVW framework based on lotusjs-components for developing HTML5 applications using web components.",
   "main": "lib/index.js",
   "directories": {
