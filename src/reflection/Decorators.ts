@@ -6,21 +6,19 @@ import * as Lavender from 'lavenderjs/lib';
 
 export type injectionResolver = {property:string, type:Function};
 
-export function inject(target:any, key:string){
-    //set target[key] equal to a new instance of the mapped constructor of target's type
-    let t = Reflect.getMetadata('design:type', target, key);
-    if (!t) {
-        // Needed to support react native inheritance
-        t = Reflect.getMetadata('design:type', target.constructor, key);
+export function inject(injectorKey?:string):any{
+    return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+        //set target[key] equal to a new instance of the mapped constructor of target's type
+        let t = Reflect.getMetadata('design:type', target, propertyKey);
+        if (!t) {
+            // Needed to support react native inheritance
+            t = Reflect.getMetadata('design:type', target.constructor, propertyKey);
+        }
+        if(!target['resolveInjections']){
+            target['resolveInjections'] = new Array<injectionResolver>();
+        }
+        (target['resolveInjections'] as Array<injectionResolver>).push({property:propertyKey, type:(injectorKey) ? injectorKey : t});
     }
-    if(!target['resolveInjections']){
-        target['resolveInjections'] = new Array<injectionResolver>();
-    }
-    (target['resolveInjections'] as Array<injectionResolver>).push({property:key, type:t});
-    //console.log('key: ' + key);
-    //console.log('t.name: ' + t.name);
-    //console.log('target.constructor.name: ' + target.constructor.name);
-    //console.log('target.constructor.prototype: ' + target.constructor.prototype);
 }
 
 export function injectable(target:any){

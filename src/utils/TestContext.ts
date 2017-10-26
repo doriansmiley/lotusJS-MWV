@@ -1,7 +1,7 @@
 import {Context} from "../context/Context";
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
-import {TestObject} from "../utils/TestUtils";
+import {TestObject} from "../utils/TestObject";
 /**
  * This class is used for testing purposes only. It is not included in distributions
  */
@@ -17,6 +17,7 @@ export class TestContext extends Context{
 
     public mapObjects(){
         this.injector.mapObject(TestObject, TestObject, false);
+        this.injector.mapObject('TestObject', TestObject, false);
         this.injector.mapSingletonInstance(EventDispatcherFactory, EventDispatcherFactory.getInstance());
         this.injector.mapSingletonInstance(HttpServiceFactory, HttpServiceFactory.getInstance());
     }
