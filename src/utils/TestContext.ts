@@ -2,6 +2,7 @@ import {Context} from "../context/Context";
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 import {TestObject} from "../utils/TestObject";
+import {TestObjectSub} from "../utils/TestObjectSub";
 /**
  * This class is used for testing purposes only. It is not included in distributions
  */
@@ -17,6 +18,7 @@ export class TestContext extends Context{
 
     public mapObjects(){
         this.injector.mapObject(TestObject, TestObject, false);
+        this.injector.mapObject(TestObjectSub, TestObjectSub, false, [this]);
         this.injector.mapObject('TestObjectWithParams', TestObject, false, ['1234', 'myLabel']);
         this.injector.mapObject('TestObjectWithParams2', TestObject, false, ['4321', 'label']);
         this.injector.mapObject('TestObject', TestObject, false);

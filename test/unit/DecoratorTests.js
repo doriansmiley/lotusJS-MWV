@@ -17,6 +17,9 @@ describe('Decorator Tests ', function () {
         expect( testUtils.testObject instanceof  LotusMVW.TestObject).toBe(true);
         expect( testUtils.testObject2 instanceof  LotusMVW.TestObject).toBe(true);
         expect( testUtils.testObject3 instanceof  LotusMVW.TestObject).toBe(true);
+        expect( testUtils.testObjectSub instanceof  LotusMVW.TestObjectSub).toBe(true);
+        expect( testUtils.testObjectSub.eventDispatcherFactory instanceof  LotusMVW.EventDispatcherFactory).toBe(true);
+        expect( testUtils.testObjectSub.httpFactory instanceof  LotusMVW.HttpServiceFactory).toBe(true);
         //test injection with parameters
         expect( testUtils.testObject3.id == '1234').toBe(true);
         expect( testUtils.testObject3.label == 'myLabel').toBe(true);

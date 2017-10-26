@@ -9,6 +9,7 @@ import {HttpServiceFactory} from "../factory/HttpServiceFactory";
 import * as Lavender from 'lavenderjs/lib';
 import {IContext} from "../context/IContext";
 import {TestObject} from "./TestObject";
+import {TestObjectSub} from "./TestObjectSub";
 /*
 * This class is used for testing purposes only. It is not included in distributions
 * */
@@ -21,6 +22,8 @@ export class TestUtils extends Lavender.Subject{
     public httpFactory:HttpServiceFactory;
     @inject()
     public testObject:TestObject;
+    @inject()
+    public testObjectSub:TestObjectSub;
     @inject('TestObject')
     public testObject2:TestObject;
     @inject('TestObjectWithParams')

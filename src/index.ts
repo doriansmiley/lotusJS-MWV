@@ -6,6 +6,7 @@
 //export * from './utils/TestUtils';
 //export * from './utils/TestContext';
 //export * from './utils/TestObject';
+//export * from './utils/TestObjectSub';
 
 export * from './context/IInjector';
 export * from './context/Injector';
