@@ -14,7 +14,7 @@ export class Injector implements IInjector{
         this.objectMap = {};
     }
 
-    public mapObject(key:any, constructor:Function, useSingleton:boolean=false):void{
+    public mapObject(key:any, constructor:FunctionConstructor, useSingleton:boolean=false):void{
         if(typeof key == 'function'){
             var mapIndex = -1;
             this.typeMap.forEach(function(value:any, index:number){
@@ -25,7 +25,7 @@ export class Injector implements IInjector{
             });
             //TODO:refactror to overrite index
             if(mapIndex < 0){
-                this.typeMap.push({constructor:constructor, useSingleton:useSingleton, instance:null, type:key});
+                this.typeMap.push({constructor:constructor, useSingleton:useSingleton, instance:new constructor(), type:key});
             }
         }else{
             //instantiate singleton instance upon request is more efficient

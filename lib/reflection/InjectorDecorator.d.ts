@@ -5,9 +5,7 @@ import 'reflect-metadata';
 export declare type injectionResolver = {
     property: string;
     type: Function;
-    context: string;
-    instance: any;
 };
-export declare const injections: Array<injectionResolver>;
-export declare function inject(context: string): any;
-export declare function bindable(): any;
+export declare function inject(target: any, key: string): void;
+export declare function injectable(target: any): any;
+export declare function bindable(target: any, key: string): void;

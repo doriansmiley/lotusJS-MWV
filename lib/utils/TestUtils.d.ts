@@ -1,11 +1,16 @@
 import { EventDispatcherFactory } from "../factory/EventDispatcherFactory";
 import { HttpServiceFactory } from "../factory/HttpServiceFactory";
 import * as Lavender from 'lavenderjs/lib';
-import { Context } from "../context/Context";
+import { IContext } from "../context/IContext";
 export declare class TestUtils extends Lavender.Subject {
     eventDispatcherFactory: EventDispatcherFactory;
     httpFactory: HttpServiceFactory;
-    context: Context;
+    testObject: TestObject;
     bindingTest: Object;
+    context: IContext;
+    constructor(context: IContext);
+}
+export declare class TestObject extends Lavender.Subject {
+    id: string;
     constructor();
 }

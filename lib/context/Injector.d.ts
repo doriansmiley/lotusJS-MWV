@@ -8,7 +8,7 @@ export declare class Injector implements IInjector {
     objectMap: Object;
     typeMap: Array<Object>;
     constructor(context: Lotus.IContext);
-    mapObject(key: any, constructor: Function, useSingleton?: boolean): void;
+    mapObject(key: any, constructor: FunctionConstructor, useSingleton?: boolean): void;
     mapSingletonInstance(key: any, instance: any): void;
     inject(key: any): Object;
 }

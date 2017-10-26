@@ -40,9 +40,9 @@ export function injectable(target:any){
         }
         return this;
     }
-
-    // copy prototype so intanceof operator still works
-    f.prototype = target.prototype;
+    f.prototype = Object.create(target.prototype);
+    // Remember the constructor property was set wrong, let's fix it
+    f.prototype.constructor = f;
 
     return f;
 }

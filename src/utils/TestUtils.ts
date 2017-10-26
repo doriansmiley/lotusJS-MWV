@@ -6,9 +6,8 @@ import {injectable} from '../reflection/InjectorDecorator';
 import {bindable} from '../reflection/InjectorDecorator';
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
-import {TestContext} from "../utils/TestContext";
 import * as Lavender from 'lavenderjs/lib';
-import {Context} from "../context/Context";
+import {IContext} from "../context/IContext";
 /*
 * This class is used for testing purposes only. It is not included in distributions
 * */
@@ -20,12 +19,21 @@ export class TestUtils extends Lavender.Subject{
     @inject
     public httpFactory:HttpServiceFactory;
     @inject
-    public context:Context;
+    public testObject:TestObject;
     @bindable
     public bindingTest:Object;
+    public context:IContext;
 
+    constructor(context:IContext){
+        super();
+        this.context = context;
+    }
+
+}
+
+export class TestObject extends Lavender.Subject{
+    public id = Lavender.UuidUtils.generateUUID();
     constructor(){
         super();
     }
-
 }

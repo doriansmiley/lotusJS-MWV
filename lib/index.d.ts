@@ -1,6 +1,8 @@
 /**
  * Created by dsmiley on 7/24/17.
  */
+export * from './utils/TestUtils';
+export * from './utils/TestContext';
 export * from './context/IInjector';
 export * from './context/Injector';
 export * from './context/CommandMap';
