@@ -23,6 +23,10 @@ export class TestUtils extends Lavender.Subject{
     public testObject:TestObject;
     @inject('TestObject')
     public testObject2:TestObject;
+    @inject('TestObjectWithParams')
+    public testObject3:TestObject;
+    @inject('TestObjectWithParams2')
+    public testObject4:TestObject;
     @bindable
     public bindingTest:Object;
     public context:IContext;

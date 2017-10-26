@@ -1,4 +1,5 @@
 export declare class TestObject {
     id: string;
-    constructor();
+    label: string;
+    constructor(id?: string, label?: string);
 }

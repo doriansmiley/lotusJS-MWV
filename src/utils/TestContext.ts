@@ -17,6 +17,8 @@ export class TestContext extends Context{
 
     public mapObjects(){
         this.injector.mapObject(TestObject, TestObject, false);
+        this.injector.mapObject('TestObjectWithParams', TestObject, false, ['1234', 'myLabel']);
+        this.injector.mapObject('TestObjectWithParams2', TestObject, false, ['4321', 'label']);
         this.injector.mapObject('TestObject', TestObject, false);
         this.injector.mapSingletonInstance(EventDispatcherFactory, EventDispatcherFactory.getInstance());
         this.injector.mapSingletonInstance(HttpServiceFactory, HttpServiceFactory.getInstance());
