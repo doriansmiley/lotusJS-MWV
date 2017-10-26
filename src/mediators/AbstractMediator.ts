@@ -1,6 +1,7 @@
 import {IMediator} from "./IMediator";
 import * as Lotus from "lotusjs-components/lib";
 import * as Lavender from 'lavenderjs/lib';
+import {injectable} from "../reflection/InjectorDecorator";
 /**
  * Created by dsmiley on 7/26/17.
  */

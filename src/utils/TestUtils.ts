@@ -2,6 +2,7 @@
  * Created by dsmiley on 10/25/17.
  */
 import {inject} from '../reflection/InjectorDecorator';
+import {injectable} from '../reflection/InjectorDecorator';
 import {bindable} from '../reflection/InjectorDecorator';
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
@@ -11,15 +12,16 @@ import {Context} from "../context/Context";
 /*
 * This class is used for testing purposes only. It is not included in distributions
 * */
+@injectable
 export class TestUtils extends Lavender.Subject{
 
-    @inject('TestContext')
+    @inject
     public eventDispatcherFactory:EventDispatcherFactory;
-    @inject('TestContext')
+    @inject
     public httpFactory:HttpServiceFactory;
-    @inject('TestContext')
+    @inject
     public context:Context;
-    @bindable()
+    @bindable
     public bindingTest:Object;
 
     constructor(){
