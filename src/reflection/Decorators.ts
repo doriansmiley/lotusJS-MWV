@@ -6,7 +6,7 @@ import * as Lavender from 'lavenderjs/lib';
 
 export type injectionResolver = {property:string, type:Function};
 
-export function inject(injectorKey?:string):any{
+export function inject(injectorKey?:string):Function{
     return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
         //set target[key] equal to a new instance of the mapped constructor of target's type
         let t = Reflect.getMetadata('design:type', target, propertyKey);
