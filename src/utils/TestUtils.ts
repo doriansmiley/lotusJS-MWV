@@ -1,29 +1,39 @@
 /**
  * Created by dsmiley on 10/25/17.
  */
-import {inject} from '../reflection/InjectorDecorator';
-import {bindable} from '../reflection/InjectorDecorator';
+import {inject} from '../reflection/Decorators';
+import {injectable} from '../reflection/Decorators';
+import {bindable} from '../reflection/Decorators';
 import {EventDispatcherFactory} from "../factory/EventDispatcherFactory";
 import {HttpServiceFactory} from "../factory/HttpServiceFactory";
-import {TestContext} from "../utils/TestContext";
 import * as Lavender from 'lavenderjs/lib';
-import {Context} from "../context/Context";
+import {IContext} from "../context/IContext";
+import {TestObject} from "./TestObject";
 /*
 * This class is used for testing purposes only. It is not included in distributions
 * */
+@injectable
 export class TestUtils extends Lavender.Subject{
 
-    @inject('TestContext')
+    @inject()
     public eventDispatcherFactory:EventDispatcherFactory;
-    @inject('TestContext')
+    @inject()
     public httpFactory:HttpServiceFactory;
-    @inject('TestContext')
-    public context:Context;
-    @bindable()
+    @inject()
+    public testObject:TestObject;
+    @inject('TestObject')
+    public testObject2:TestObject;
+    @inject('TestObjectWithParams')
+    public testObject3:TestObject;
+    @inject('TestObjectWithParams2')
+    public testObject4:TestObject;
+    @bindable
     public bindingTest:Object;
+    public context:IContext;
 
-    constructor(){
+    constructor(context:IContext){
         super();
+        this.context = context;
     }
 
 }

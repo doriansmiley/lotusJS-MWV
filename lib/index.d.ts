@@ -8,7 +8,7 @@ export * from './context/IMediatorMap';
 export * from './context/MediatorMap';
 export * from './context/ComponentMap';
 export * from './context/Context';
-export * from './reflection/InjectorDecorator';
+export * from './reflection/Decorators';
 export * from './factory/IEventDispatcherFactory';
 export * from './factory/EventDispatcherFactory';
 export * from './factory/ISerializeFactory';

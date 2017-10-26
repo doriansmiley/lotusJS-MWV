@@ -14,7 +14,7 @@ export class Injector implements IInjector{
         this.objectMap = {};
     }
 
-    public mapObject(key:any, constructor:Function, useSingleton:boolean=false):void{
+    public mapObject(key:any, constructor:FunctionConstructor, useSingleton:boolean=false, params?:Array<any>):void{
         if(typeof key == 'function'){
             var mapIndex = -1;
             this.typeMap.forEach(function(value:any, index:number){
@@ -25,11 +25,11 @@ export class Injector implements IInjector{
             });
             //TODO:refactror to overrite index
             if(mapIndex < 0){
-                this.typeMap.push({constructor:constructor, useSingleton:useSingleton, instance:null, type:key});
+                this.typeMap.push({constructor:constructor, useSingleton:useSingleton, instance:null, type:key, params:params});
             }
         }else{
             //instantiate singleton instance upon request is more efficient
-            this.objectMap[key] = {constructor:constructor, useSingleton:useSingleton, instance:null};
+            this.objectMap[key] = {constructor:constructor, useSingleton:useSingleton, instance:null, params:params};
         }
     }
 
@@ -66,22 +66,22 @@ export class Injector implements IInjector{
             if(map){
                 if( map['useSingleton'] ){
                     if( map['instance'] === null ){
-                        map['instance'] = new (map.constructor as FunctionConstructor)();
+                        map['instance'] = new (map.constructor as FunctionConstructor)(...map['params']);
                     }
                     return map['instance'];
                 }else{
-                    return new (map.constructor as FunctionConstructor)();
+                    return new (map.constructor as FunctionConstructor)(...map['params']);
                 }
             }
         }else{
             if( this.objectMap[key] !== null && this.objectMap[key] !== undefined ){
                 if( this.objectMap[key].useSingleton ){
                     if( this.objectMap[key].instance === null ){
-                        this.objectMap[key].instance = new this.objectMap[key].constructor();
+                        this.objectMap[key].instance = new this.objectMap[key].constructor(...this.objectMap[key].params);
                     }
                     return this.objectMap[key].instance;
                 }else{
-                    return new this.objectMap[key].constructor();
+                    return new this.objectMap[key].constructor(...this.objectMap[key].params);
                 }
             }
         }
