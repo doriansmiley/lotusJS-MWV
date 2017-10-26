@@ -4,7 +4,15 @@
 import * as Lavender from 'lavenderjs/lib';
 
 export class TestObject{
-    public id = Lavender.UuidUtils.generateUUID();
-    constructor(){
+    public id:string = Lavender.UuidUtils.generateUUID();
+    public label:string = Lavender.UuidUtils.generateUUID();
+
+    constructor(id?:string, label?:string){
+        if(id){
+            this.id = id;
+        }
+        if(label){
+            this.label = label;
+        }
     }
 }

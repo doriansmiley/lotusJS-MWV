@@ -8,6 +8,8 @@ export declare class TestUtils extends Lavender.Subject {
     httpFactory: HttpServiceFactory;
     testObject: TestObject;
     testObject2: TestObject;
+    testObject3: TestObject;
+    testObject4: TestObject;
     bindingTest: Object;
     context: IContext;
     constructor(context: IContext);
