@@ -61,10 +61,11 @@ Note you can map objects that will be created by the IOC container using `mapObj
 To inject objects you use the context's injector as follows:
 
 ````
-SampleApp.resources.injector.inject(SampleApp.HTTP_SERVICE_KEY)
+var context = SampleApp.init();
+context.injector.inject(SampleApp.HTTP_SERVICE_KEY)
 ````
 
-Where `SampleApp.resources` is defined as follows:
+Where `SampleApp` is defined as follows:
 
 ````
 //global namespace for app
@@ -81,7 +82,7 @@ If you are working in typescript you can take advantage of class decorators and 
 
 ````
 @injectable
-export class ButtonMediator extends AbstractMediator
+export class HttpServiceFactory
 ````
 
 The `@injectable` decorator will use the reflection API to include the required code to support injections. You can then inject instances into properties as follows:
