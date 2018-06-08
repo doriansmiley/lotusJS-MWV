@@ -104,28 +104,28 @@ this.injector.mapSingletonInstance(SampleApp.EVENT_DISPATCHER_KEY, LotusMVW.Even
 ````
 You can then access the event bus as follows:
 ````
-SampleApp.resources.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
+context.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
 ````
 To add an event listener you call its `addEventDispatcher` method:
 ````
-var eventBus = SampleApp.resources.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
+var eventBus = context.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
 eventBus.addEventListener('eventType', this, 'myEventHandler');
 ````
 Where `eventType` is the event that will be dispatched, `this` is a reference to the instance adding the listener, and `myEventHandler` is an instance method of the instance adding the listener (`this`).
 
 To remove an event listener you call its `removeEventListener` method:
 ````
-var eventBus = SampleApp.resources.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
+var eventBus = context.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
 eventBus.removeEventListener('eventType', this, 'myEventHandler');
 ````
 To see if the event bus can listen call its `canListen` method:
 ````
-var eventBus = SampleApp.resources.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
+var eventBus = context.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
 eventBus.canListen('eventType', this, 'myEventHandler');
 ````
 To dispatch and event on the event bus:
 ````
-var eventBus = SampleApp.resources.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
+var eventBus = context.injector.inject(SampleApp.EVENT_DISPATCHER_KEY);
 eventBus.dispatch(new Lavender.AbstractEvent('testEvent1', {data:myData}));
 ````
 Where `testEvent1` is the event type and `{data:myData}` is data that will be added to the event payload and can be accessed using `event.payload.data`. You can define any object structure you like for the event payload for example `{myData:myData, moreData:moreData}` which can be accessed using `event.payload.myData` and `event.payload.moreData`.
